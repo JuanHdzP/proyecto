@@ -36,7 +36,7 @@ require_once './menu.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="bi-ui-checks"></i> Crear editorial
+                    <i class="bi-printer"></i> Crear editorial
                 </div>
                 <div class="card-body">
                     <?php
@@ -59,11 +59,11 @@ require_once './menu.php';
                     ?>
                     <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST">
                         <div class="mb-3">
-                            <label for="editorial" class="form-label">Categoría</label>
+                            <label for="editorial" class="form-label">Editorial</label>
                             <input type="text" name="editorial" class="form-control form-control-sm<?php echo isset($errors) && $errors->has('editorial') ? ' is-invalid' : 'is-valid' ?>" id="editorial" aria-describedby="categoriaHelp" value="<?php echo $_POST['editorial'] ?? '' ?>">
                             <div id="editorialHelp" class="invalid-feedback"><?php echo isset($errors) && $errors->first('editorial') ?></div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
                         <a href="editoriales.php" class="btn btn-secondary btn-sm">Cancelar</a>
                     </form>
                     <?php
@@ -78,7 +78,7 @@ require_once './menu.php';
                             $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
                             echo '<h6>Editorial actualizada</h6>';
-                            echo '<div><a href="editoriales.php" class="btn btn-secondary btn-sm">categorías</a></div>';
+                            echo '<div><a href="editoriales.php" class="btn btn-secondary btn-sm">Ir a editoriales</a></div>';
                         } else {
                             //creamos
                             $sql = 'insert into editoriales (editorial) values (:editorial)';
@@ -86,7 +86,7 @@ require_once './menu.php';
                             $sentencia->bindValue(':editorial', $_POST['editorial'], PDO::PARAM_STR);
                             $sentencia->execute();
                             echo '<h6>Categoría creada</h6>';
-                            echo '<div><a href="editoriales.php" class="btn btn-secondary btn-sm">Editoriales</a></div>';
+                            echo '<div><a href="editoriales.php" class="btn btn-secondary btn-sm">Ir a editoriales</a></div>';
                         }
                     }
                     ?>

@@ -1,14 +1,18 @@
 {
-    "name": "aeternum/dsm31",
+    "name": "aw/proyecto",
+    "description": "Aplicaciones web proyecto Cross_book",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "5.3.x-dev",
+        "rakit/validation": "dev-master",
+        "aura/session": "3.x-dev"
+    },
+    "license": "MIT",
     "authors": [
         {
-            "name": "Cruz Rosales",
-            "email": "crosalesc@gmail.com"
+            "name": "2021 DSM31 Juan Hernandez Puebla",
+            "email": "al222010053@gmail.com"
         }
     ],
-    "require": {
-        "vlucas/phpdotenv": "^5.3",
-        "rakit/validation": "^1.4",
-        "aura/session": "^2.1"
-    }
+    "minimum-stability": "dev"
 }

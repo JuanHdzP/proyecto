@@ -17,7 +17,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['correo_electronico']) 
         // iniciar sesión y guardar datos
         $session_factory = new Aura\Session\SessionFactory;
         $session = $session_factory->newInstance($_COOKIE);
-        $segment = $session->getSegment('viajes_experienciales');
+        $segment = $session->getSegment('cross_book');
         $segment->set('id', $usuario['id']);
         $segment->set('nombre', $usuario['nombre']);
         $segment->set('correo_electronico', $usuario['correo_electronico']);
@@ -61,7 +61,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['correo_electronico']) 
                                 <label for="contrasena" class="form-label">Contraseña</label>
                                 <input type="password" class="form-control form-control-sm" name="contrasena" id="contrasena" required>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm">enviar</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
                         </form>
                     </div>
                 </div>

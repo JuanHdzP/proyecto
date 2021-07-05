@@ -56,7 +56,7 @@ require_once './menu.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="bi-binoculars-fill"></i> Crear libro
+                    <i class="bi-book"></i> Crear libro
                 </div>
                 <div class="card-body">
                 <?php
@@ -64,17 +64,14 @@ require_once './menu.php';
                         // validamos los datos
                         $validator = new Validator;
                         $validation = $validator->make($_POST, [
-                            'editorial_id' => 'required|integer|min:1|max:32'
+                            'editorial_id' => 'required|integer|min:1|max:100'
                             , 'titulo' => 'required|min:2|max:100'
                             , 'autor' => 'required|min:2|max:100'
                             , 'descripcion' => 'required'
                             , 'accion' => 'required|in:Prestamo,Intercambio'
-                            , 'autor' => 'required|min:2|max:100'
                             , 'existencias' => 'required|min:1|max:100'
                             , 'costo_prestamo_dia' => 'required|min:1|max:100'
                             , 'costo_libro_nuevo' => 'required|min:1|max:100'
-                            // , 'categoria_id' => 'required|array'
-                            // , 'categoria_id.*' => 'integer'
                         ]);
                         $validation->setMessages([
                             'required' => ':attribute es requerido'
@@ -86,7 +83,7 @@ require_once './menu.php';
                         $errors = $validation->errors();
                     }
                     if ('GET' == $_SERVER['REQUEST_METHOD'] || $validation->fails()) {
-                    ?>
+                        ?>
                     <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="titulo" class="form-label">Título del libro</label>
@@ -189,7 +186,7 @@ fin;
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
                         <a href="libros.php" class="btn btn-secondary btn-sm">Cancelar</a>
                     </form>
                     <?php

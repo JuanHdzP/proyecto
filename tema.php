@@ -36,7 +36,7 @@ require_once './menu.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="bi-ui-checks"></i> Crear tema
+                    <i class="bi-stars"></i> Crear tema
                 </div>
                 <div class="card-body">
                     <?php
@@ -63,7 +63,7 @@ require_once './menu.php';
                             <input type="text" name="nombre" class="form-control form-control-sm<?php echo isset($errors) && $errors->has('nombre') ? ' is-invalid' : 'is-valid' ?>" id="nombre" aria-describedby="nombreHelp" value="<?php echo $_POST['nombre'] ?? '' ?>">
                             <div id="nombreHelp" class="invalid-feedback"><?php echo isset($errors) && $errors->first('nombre') ?></div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
                         <a href="temas.php" class="btn btn-secondary btn-sm">Cancelar</a>
                     </form>
                     <?php
@@ -78,7 +78,7 @@ require_once './menu.php';
                             $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
                             echo '<h6>Categoría actualizada</h6>';
-                            echo '<div><a href="temas.php" class="btn btn-secondary btn-sm">Temas</a></div>';
+                            echo '<div><a href="temas.php" class="btn btn-secondary btn-sm">Ir a temas</a></div>';
                         } else {
                             //creamos
                             $sql = 'insert into temas (nombre) values (:nombre)';
@@ -86,7 +86,7 @@ require_once './menu.php';
                             $sentencia->bindValue(':nombre', $_POST['nombre'], PDO::PARAM_STR);
                             $sentencia->execute();
                             echo '<h6>Tema creado</h6>';
-                            echo '<div><a href="temas.php" class="btn btn-secondary btn-sm">Temas</a></div>';
+                            echo '<div><a href="temas.php" class="btn btn-secondary btn-sm">Ir a temas</a></div>';
                         }
                     }
                     ?>

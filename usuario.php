@@ -181,6 +181,7 @@ fin;
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="usuarios.php" class="btn btn-secondary btn">Cancelar</a>
                     </form>
                     <?php
                     } else {

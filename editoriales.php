@@ -21,7 +21,7 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="bi-ui-checks"></i> Editoriales
+                    <i class="bi-printer"></i> Editoriales
                 </div>
                 <div class="card-body">
                     <a class="float-end btn btn-primary btn-sm" href="editorial.php" title="Crear editorial">

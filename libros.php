@@ -17,7 +17,7 @@
     ?>
     <div class="container mt-3">
         <div class="card">
-            <h5 class="card-header"><i class="bi-binoculars-fill"></i> Libros</h5>
+            <h5 class="card-header"><i class="bi-book"></i> Libros</h5>
             <div class="card-body">
                 <table class="table-striped table table-hover table-sm">
                     <thead>

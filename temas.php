@@ -21,7 +21,7 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="bi-ui-checks"></i> Temas
+                    <i class="bi-stars"></i> Temas
                 </div>
                 <div class="card-body">
                     <a class="float-end btn btn-primary btn-sm" href="tema.php" title="Crear categoría">
