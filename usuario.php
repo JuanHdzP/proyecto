@@ -5,7 +5,7 @@ require_once './conexion.php';
 $accion = 'Crear usuario';
 if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_GET['id']) && is_numeric($_GET['id'])) {
     $accion = 'Editar usuario';
-    $sql = 'select id, nombre, primer_apellido, segundo_apellido, sexo, fecha_nacimiento, correo_electronico, contrasena, perfil, estatus, celular, comprobante_domicilio, identificacion, carta_aval_1, carta_aval_2 from usuarios where id = :id';
+    $sql = 'select id, nombre, primer_apellido, segundo_apellido, sexo, fecha_nacimiento, correo_electronico, contrasena, perfil, estatus, celular from usuarios where id = :id';
     $sentencia = $conexion->prepare($sql);
     $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
     $sentencia->execute();
@@ -55,10 +55,6 @@ require_once './menu.php';
                             , 'perfil' => 'required|in:Administrador,Cliente'
                             , 'estatus' => 'required|in:Activo,Inactivo'
                             , 'celular' => 'required|min:10|max:45'
-                            , 'comprobante_domicilio' => 'required|min:2|max:100'
-                            , 'identificacion' => 'required|min:2|max:100'
-                            , 'carta_aval_1' => 'required|min:2|max:100'
-                            , 'carta_aval_2' => 'required|min:2|max:100'
                         ]);
                         $validation->setMessages([
                             'required' => ':attribute es requerido'
@@ -71,7 +67,7 @@ require_once './menu.php';
                     }
                     if ('GET' == $_SERVER['REQUEST_METHOD'] || $validation->fails()) {
                     ?>
-                    <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST">
+                    <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre completo</label>
                             <input type="text" name="nombre" required class="form-control form-control-sm" id="nombre" value="<?php echo htmlentities($_POST['nombre'] ?? '') ?>">
@@ -162,24 +158,80 @@ fin;
                                     <label for="celular" class="form-label">Celular</label>
                                     <input type="tel" name="celular" required class="form-control form-control-sm" id="celular" value="<?php echo htmlentities($_POST['celular'] ?? '') ?>">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="comprobante_domicilio" class="form-label">Comprobante de domicilio</label>
-                                    <input type="text" name="comprobante_domicilio" required class="form-control form-control-sm" id="comprobante_domicilio" value="<?php echo htmlentities($_POST['comprobante_domicilio'] ?? '') ?>">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="identificacion" class="form-label">Identificación</label>
-                                    <input type="text" name="identificacion" required class="form-control form-control-sm" id="identificacion" value="<?php echo htmlentities($_POST['identificacion'] ?? '') ?>">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="carta_aval_1" class="form-label">Carta Aval 1</label>
-                                    <input type="text" name="carta_aval_1" required class="form-control form-control-sm" id="carta_aval_1" value="<?php echo htmlentities($_POST['carta_aval_1'] ?? '') ?>">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="carta_aval_2" class="form-label">Carta Aval 2</label>
-                                    <input type="text" name="carta_aval_2" required class="form-control form-control-sm" id="carta_aval_2" value="<?php echo htmlentities($_POST['carta_aval_2'] ?? '') ?>">
-                                </div>
+                                <div id="grupo-documentacion" style="display:none">
+                                    <div class="alert alert-secondary" role="alert">
+                                        Documentación requerida
+                                    </div>
+                                    <table class="table table-striped table-hover table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:50%;">Identificación</th>
+                                                <th style="width:50%;"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <input type="file" class="form-control form-control-sm" name="archivo1" accept=".jpg">
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-striped table-hover table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:50%;">Comprobante de domicilio</th>  
+                                                <th style="width:50%;"></th>                    
+                                            </tr>
+                                        </thead>
+                                    <tbody>
+                                    <tr>
+                                    <td colspan="2">
+                                    <input type="file" class="form-control form-control-sm" name="archivo2" accept=".jpg">
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                         <table class="table table-striped table-hover table-sm">
+                            <thead>
+                                <tr>                             
+                                    <th style="width:50%;">Carta aval 1</th>  
+                                    <th style="width:50%;"></th>                                                     
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">
+                                    <input type="file" class="form-control form-control-sm" name="archivo3" accept=".jpg">
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                            <table class="table table-striped table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th style="width:50%;">Carta aval 2</th>
+                                    <th style="width:50%;"></th>                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">
+                                    <input type="file" class="form-control form-control-sm" name="archivo4" accept=".jpg">
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
                             </div>
                         </div>
+                    </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                         <a href="usuarios.php" class="btn btn-secondary btn">Cancelar</a>
                     </form>
@@ -220,21 +272,52 @@ fin;
                                 $sentencia->execute();
                                 $contrasena = $sentencia->fetchColumn(0);
                             }
+                            if(is_uploaded_file($_FILES['archivo1']['tmp_name'])) {
+                                $nombre_archivo1 = uniqid('ID-', true) . '.jpg'; // se supone sólo se admiten .jpg
+                                move_uploaded_file($_FILES['archivo1']['tmp_name'], './documentacion-imgs/' . $nombre_archivo1);
+                            }
+                            else{
+                                $nombre_archivo1 = "";
+                            }
+                            if (is_uploaded_file($_FILES['archivo2']['tmp_name'])) {
+                                $nombre_archivo2 = uniqid('CD-', true) . '.jpg'; // se supone sólo se admiten .jpg
+                                // mover archivo a su ubicación final
+                                move_uploaded_file($_FILES['archivo2']['tmp_name'], './documentacion-imgs/' . $nombre_archivo2);
+                            }
+                            else{
+                                $nombre_archivo2 = "";
+                            }
+                            if (is_uploaded_file($_FILES['archivo3']['tmp_name'])) {
+                                $nombre_archivo3 = uniqid('CA1-', true) . '.jpg'; // se supone sólo se admiten .jpg
+                                // mover archivo a su ubicación final
+                                move_uploaded_file($_FILES['archivo3']['tmp_name'], './documentacion-imgs/' . $nombre_archivo3);
+                            }
+                            else{
+                                $nombre_archivo3 = "";
+                            }
+                            if (is_uploaded_file($_FILES['archivo4']['tmp_name'])) {
+                                $nombre_archivo4 = uniqid('CA2-', true) . '.jpg'; // se supone sólo se admiten .jpg
+                                // mover archivo a su ubicación final
+                                move_uploaded_file($_FILES['archivo4']['tmp_name'], './documentacion-imgs/' . $nombre_archivo4);
+                            }
+                            else{
+                                $nombre_archivo4 = "";
+                            }
                             $sentencia = $conexion->prepare($sql);
-                            $sentencia->bindValue(':nombre', $_POST['nombre'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':primer_apellido', $_POST['primer_apellido'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':segundo_apellido', $_POST['segundo_apellido'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':sexo', $_POST['sexo'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':fecha_nacimiento', $_POST['fecha_nacimiento'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':correo_electronico', $_POST['correo_electronico'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':nombre', $_REQUEST['nombre'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':primer_apellido', $_REQUEST['primer_apellido'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':segundo_apellido', $_REQUEST['segundo_apellido'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':sexo', $_REQUEST['sexo'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':fecha_nacimiento', $_REQUEST['fecha_nacimiento'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':correo_electronico', $_REQUEST['correo_electronico'], PDO::PARAM_STR);
                             $sentencia->bindValue(':contrasena', $contrasena, PDO::PARAM_STR);
-                            $sentencia->bindValue(':perfil', $_POST['perfil'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':estatus', $_POST['estatus'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':celular', $_POST['celular'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':comprobante_domicilio', $_POST['comprobante_domicilio'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':identificacion', $_POST['identificacion'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':carta_aval_1', $_POST['carta_aval_1'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':carta_aval_2', $_POST['carta_aval_2'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':perfil', $_REQUEST['perfil'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':estatus', $_REQUEST['estatus'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':celular', $_REQUEST['celular'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':identificacion', $nombre_archivo1, PDO::PARAM_STR);
+                            $sentencia->bindValue(':comprobante_domicilio', $nombre_archivo2, PDO::PARAM_STR);
+                            $sentencia->bindValue(':carta_aval_1', $nombre_archivo3, PDO::PARAM_STR);
+                            $sentencia->bindValue(':carta_aval_2', $nombre_archivo4, PDO::PARAM_STR);
                             $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
                             echo '<h6>Usuario actualizado</h6>';
@@ -274,26 +357,58 @@ fin;
                                 , :carta_aval_2
                             )
 fin;
+                            if (is_uploaded_file($_FILES['archivo1']['tmp_name'])) {
+                                $nombre_archivo1 = uniqid('ID-', true) . '.jpg'; // se supone sólo se admiten .jpg
+                                // mover archivo a su ubicación final
+                                move_uploaded_file($_FILES['archivo1']['tmp_name'], './documentacion-imgs/' . $nombre_archivo1);
+                            }
+                            else{
+                                $nombre_archivo1 = "";
+                            }
+                            if (is_uploaded_file($_FILES['archivo2']['tmp_name'])) {
+                                $nombre_archivo2 = uniqid('CD-', true) . '.jpg'; // se supone sólo se admiten .jpg
+                                // mover archivo a su ubicación final
+                                move_uploaded_file($_FILES['archivo2']['tmp_name'], './documentacion-imgs/' . $nombre_archivo2);
+                            }
+                            else{
+                                $nombre_archivo2 = "";
+                            }
+                            if (is_uploaded_file($_FILES['archivo3']['tmp_name'])) {
+                                $nombre_archivo3 = uniqid('CA1-', true) . '.jpg'; // se supone sólo se admiten .jpg
+                                // mover archivo a su ubicación final
+                                move_uploaded_file($_FILES['archivo3']['tmp_name'], './documentacion-imgs/' . $nombre_archivo3);
+                            }
+                            else{
+                                $nombre_archivo3 = "";
+                            }
+                            if (is_uploaded_file($_FILES['archivo4']['tmp_name'])) {
+                                $nombre_archivo4 = uniqid('CA2-', true) . '.jpg'; // se supone sólo se admiten .jpg
+                                // mover archivo a su ubicación final
+                                move_uploaded_file($_FILES['archivo4']['tmp_name'], './documentacion-imgs/' . $nombre_archivo4);
+                            }
+                            else{
+                                $nombre_archivo4 = "";
+                            }
                             // Encriptamos la contraseña
                             $opciones = [
                                 'cost' => 12,
                             ];
                             $contrasena = password_hash($_POST['contrasena'], PASSWORD_BCRYPT, $opciones);
                             $sentencia = $conexion->prepare($sql);
-                            $sentencia->bindValue(':nombre', $_POST['nombre'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':primer_apellido', $_POST['primer_apellido'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':segundo_apellido', $_POST['segundo_apellido'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':sexo', $_POST['sexo'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':fecha_nacimiento', $_POST['fecha_nacimiento'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':correo_electronico', $_POST['correo_electronico'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':nombre', $_REQUEST['nombre'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':primer_apellido', $_REQUEST['primer_apellido'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':segundo_apellido', $_REQUEST['segundo_apellido'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':sexo', $_REQUEST['sexo'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':fecha_nacimiento', $_REQUEST['fecha_nacimiento'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':correo_electronico', $_REQUEST['correo_electronico'], PDO::PARAM_STR);
                             $sentencia->bindValue(':contrasena', $contrasena, PDO::PARAM_STR);
-                            $sentencia->bindValue(':perfil', $_POST['perfil'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':estatus', $_POST['estatus'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':celular', $_POST['celular'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':comprobante_domicilio', $_POST['comprobante_domicilio'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':identificacion', $_POST['identificacion'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':carta_aval_1', $_POST['carta_aval_1'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':carta_aval_2', $_POST['carta_aval_2'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':perfil', $_REQUEST['perfil'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':estatus', $_REQUEST['estatus'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':celular', $_REQUEST['celular'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':comprobante_domicilio', $nombre_archivo2, PDO::PARAM_STR);
+                            $sentencia->bindValue(':identificacion', $nombre_archivo1, PDO::PARAM_STR);
+                            $sentencia->bindValue(':carta_aval_1', $nombre_archivo3, PDO::PARAM_STR);
+                            $sentencia->bindValue(':carta_aval_2', $nombre_archivo4, PDO::PARAM_STR);
                             $sentencia->execute();
                             echo '<h6>Usuario creado</h6>';
                             echo '<div><a href="usuarios.php" class="btn btn-secondary btn-sm">Usuarios</a></div>';
@@ -306,5 +421,17 @@ fin;
     </div>
 </div>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>
+$(function (e){
+    $('[name="perfil"]').click(function(e){
+        if('Administrador'== $(this).val()){
+            $('#grupo-documentacion').hide();
+        }else{
+            $('#grupo-documentacion').show();
+        }
+    })
+})
+</script>
 </body>
 </html>
