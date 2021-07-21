@@ -36,7 +36,7 @@ require_once './menu.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="bi-person-circle"></i> <?php echo htmlentities($accion) ?>
+                    <h5 i class="bi-people"></i> <?php echo htmlentities($accion) ?></h5>
                 </div>
                 <div class="card-body">
                 <?php
@@ -69,7 +69,7 @@ require_once './menu.php';
                     ?>
                     <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre completo</label>
+                            <label for="nombre" class="form-label">Nombre(s)</label>
                             <input type="text" name="nombre" required class="form-control form-control-sm" id="nombre" value="<?php echo htmlentities($_POST['nombre'] ?? '') ?>">
                         </div>
                         <div class="mb-3">
@@ -232,8 +232,8 @@ fin;
                             </div>
                         </div>
                     </div>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                        <a href="usuarios.php" class="btn btn-secondary btn">Cancelar</a>
+                        <button type="submit" class="btn btn-outline-info">  Enviar</button>
+                        <a href="usuarios.php" class="btn btn-outline-danger">  Cancelar</a>
                     </form>
                     <?php
                     } else {
@@ -321,7 +321,8 @@ fin;
                             $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
                             echo '<h6>Usuario actualizado</h6>';
-                            echo '<div><a href="usuarios.php" class="btn btn-secondary btn-sm">Usuarios</a></div>';
+                            echo '<div><a href="usuarios.php" class="btn btn-outline-info"><i class="bi-people"></i>   Usuarios</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         } else {
                             //creamos
                             $sql = <<<fin
@@ -411,7 +412,8 @@ fin;
                             $sentencia->bindValue(':carta_aval_2', $nombre_archivo4, PDO::PARAM_STR);
                             $sentencia->execute();
                             echo '<h6>Usuario creado</h6>';
-                            echo '<div><a href="usuarios.php" class="btn btn-secondary btn-sm">Usuarios</a></div>';
+                            echo '<div><a href="usuarios.php" class="btn btn-outline-info"><i class="bi-people"></i>   Usuarios</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         }
                     }
                     ?>

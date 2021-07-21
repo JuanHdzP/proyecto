@@ -36,7 +36,7 @@ require_once './menu.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="bi-printer"></i> Crear editorial
+                    <h5 i class="bi-printer"></i> Crear editorial </h5>
                 </div>
                 <div class="card-body">
                     <?php
@@ -44,7 +44,7 @@ require_once './menu.php';
                         // validamos los datos
                         $validator = new Validator;
                         $validation = $validator->make($_POST, [
-                            'editorial' => 'required|min:4|max:50'
+                            'editorial' => 'required|min:2|max:50'
                         ]);
                         $validation->setMessages([
                             'required' => ':attribute es requerido'
@@ -63,8 +63,8 @@ require_once './menu.php';
                             <input type="text" name="editorial" class="form-control form-control-sm<?php echo isset($errors) && $errors->has('editorial') ? ' is-invalid' : 'is-valid' ?>" id="editorial" aria-describedby="categoriaHelp" value="<?php echo $_POST['editorial'] ?? '' ?>">
                             <div id="editorialHelp" class="invalid-feedback"><?php echo isset($errors) && $errors->first('editorial') ?></div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
-                        <a href="editoriales.php" class="btn btn-secondary btn-sm">Cancelar</a>
+                        <button type="submit" class="btn btn-outline-secondary">Enviar</button>
+                        <a href="editoriales.php" class="btn btn-outline-danger">Cancelar</a>
                     </form>
                     <?php
                     } else {
@@ -78,15 +78,17 @@ require_once './menu.php';
                             $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
                             echo '<h6>Editorial actualizada</h6>';
-                            echo '<div><a href="editoriales.php" class="btn btn-secondary btn-sm">Ir a editoriales</a></div>';
+                            echo '<div><a href="editoriales.php" class="btn btn-outline-secondary"><i class="bi-printer"></i>   Editoriales</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         } else {
                             //creamos
                             $sql = 'insert into editoriales (editorial) values (:editorial)';
                             $sentencia = $conexion->prepare($sql);
                             $sentencia->bindValue(':editorial', $_POST['editorial'], PDO::PARAM_STR);
                             $sentencia->execute();
-                            echo '<h6>Categoría creada</h6>';
-                            echo '<div><a href="editoriales.php" class="btn btn-secondary btn-sm">Ir a editoriales</a></div>';
+                            echo '<h6>Editorial creada</h6>';
+                            echo '<div><a href="editoriales.php" class="btn btn-outline-secondary"><i class="bi-printer"></i>   Editoriales</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         }
                     }
                     ?>

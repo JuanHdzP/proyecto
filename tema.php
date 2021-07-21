@@ -36,7 +36,7 @@ require_once './menu.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="bi-stars"></i> Crear tema
+                    <h5 i class="bi-bookmark-heart"></i> Crear tema</h5>
                 </div>
                 <div class="card-body">
                     <?php
@@ -63,8 +63,8 @@ require_once './menu.php';
                             <input type="text" name="nombre" class="form-control form-control-sm<?php echo isset($errors) && $errors->has('nombre') ? ' is-invalid' : 'is-valid' ?>" id="nombre" aria-describedby="nombreHelp" value="<?php echo $_POST['nombre'] ?? '' ?>">
                             <div id="nombreHelp" class="invalid-feedback"><?php echo isset($errors) && $errors->first('nombre') ?></div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
-                        <a href="temas.php" class="btn btn-secondary btn-sm">Cancelar</a>
+                        <button type="submit" class="btn btn-outline-primary">Enviar</button>
+                        <a href="temas.php" class="btn btn-outline-danger">Cancelar</a>
                     </form>
                     <?php
                     } else {
@@ -77,8 +77,9 @@ require_once './menu.php';
                             $sentencia->bindValue(':nombre', $_POST['nombre'], PDO::PARAM_STR);
                             $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
-                            echo '<h6>Categoría actualizada</h6>';
-                            echo '<div><a href="temas.php" class="btn btn-secondary btn-sm">Ir a temas</a></div>';
+                            echo '<h6>Tema actualizado</h6>';
+                            echo '<div><a href="temas.php" class="btn btn-outline-primary"><i class="bi-bookmark-heart"></i>   Temas</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         } else {
                             //creamos
                             $sql = 'insert into temas (nombre) values (:nombre)';
@@ -86,7 +87,8 @@ require_once './menu.php';
                             $sentencia->bindValue(':nombre', $_POST['nombre'], PDO::PARAM_STR);
                             $sentencia->execute();
                             echo '<h6>Tema creado</h6>';
-                            echo '<div><a href="temas.php" class="btn btn-secondary btn-sm">Ir a temas</a></div>';
+                            echo '<div><a href="temas.php" class="btn btn-outline-primary"><i class="bi-bookmark-heart"></i>   Temas</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         }
                     }
                     ?>

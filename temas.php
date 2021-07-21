@@ -21,11 +21,11 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <i class="bi-stars"></i> Temas
+                    <h4 i class="bi-bookmark-heart"></i> Temas</h4>
                 </div>
                 <div class="card-body">
-                    <a class="float-end btn btn-primary btn-sm" href="tema.php" title="Crear categoría">
-                        <i class="bi-plus-circle-fill"></i> Crear
+                    <a class="float-end btn btn-primary" href="tema.php" title="Crear tema">
+                        <i class="bi-plus-lg"></i> Crear
                     </a>
                     <table class="table-striped table table-hover table-sm">
                         <thead>
@@ -46,8 +46,8 @@
                             <tr>
                                 <td>{$tema['nombre']}</td>
                                 <td>
-                                    <a class="btn btn-primary btn-sm" href="tema.php?id={$tema['id']}" title="Clic para editar tema">
-                                        <i class="bi-pencil-square"></i>
+                                    <a class="btn btn-outline-primary float-end" href="tema.php?id={$tema['id']}" title="Clic para editar tema">
+                                        <i class="bi-pencil-fill"></i>Modificar
                                     </a>
                                 </td>
                             </tr>
@@ -56,6 +56,8 @@ fin;
                             ?>
                         </tbody>
                     </table>
+                    <a href="index.php" class="btn btn-outline-dark float-end">
+                    <i class="bi-house-door-fill"></i>   Inicio</a>
                 </div>
             </div>
         </div>

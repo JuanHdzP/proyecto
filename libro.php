@@ -15,6 +15,7 @@ if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_GET['id']) && is_numeric($_GE
         require_once './error-no-encontrado.php';
         exit;
     }
+    $libro['accion'] = explode(',',$libro['accion']);
     $_POST = array_merge($_POST, $libro);
     // Obtenemos también los ids de los temas que están asociados
     $sql = 'select tema_id from libros_temas where libro_id = :id';
@@ -32,7 +33,7 @@ if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_GET['id']) && is_numeric($_GE
     $_POST['autor'] = isset($_POST['autor']) ? $_POST['autor'] : '';
     $_POST['descripcion'] = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
     $_POST['tema_id'] = isset($_POST['tema_id']) ? $_POST['tema_id'] : [];
-    $_POST['accion'] = isset($_POST['accion']) ? $_POST['accion'] : '';
+    $_POST['accion'] = isset($_POST['accion']) ? $_POST['accion'] : [];
     $_POST['existencias'] = isset($_POST['existencias']) ? $_POST['existencias'] : '';
     $_POST['costo_prestamo_dia'] = isset($_POST['costo_prestamo_dia']) ? $_POST['costo_prestamo_dia'] : '';
     $_POST['costo_libro_nuevo'] = isset($_POST['costo_libro_nuevo']) ? $_POST['costo_libro_nuevo'] : '';
@@ -58,11 +59,13 @@ require_once './menu.php';
         <div class="col-8">
             <div class="card">
                 <div class="card-header">
-                <i class="bi bi-book"></i> Crear libro
+                <h5 i class="bi bi-book"></i> Crear libro</h5>
                 </div>
                 <div class="card-body">
                 <?php
                     if ('POST' == $_SERVER['REQUEST_METHOD']) {
+                        //print_r($_POST);
+                        //exit;
                         // validamos los datos
                         $validator = new Validator;
                         $validation = $validator->make($_POST, [
@@ -70,7 +73,7 @@ require_once './menu.php';
                             , 'titulo' => 'required|min:2|max:100'
                             , 'autor' => 'required|min:2|max:100'
                             , 'descripcion' => 'required'
-                            , 'accion' => 'required|in:Prestamo,Intercambio'
+                            , 'accion' => 'required'
                             , 'autor' => 'required|min:2|max:100'
                             , 'existencias' => 'required|integer|min:1|max:100'
                             , 'costo_prestamo_dia' => 'required|min:1|max:100'
@@ -131,7 +134,7 @@ fin;
                                     </label>
                                 </div>
 fin;
-                            }
+                                }
                             ?>
                             </div>
                         </div>
@@ -140,18 +143,17 @@ fin;
                             <textarea name="descripcion" id="descripcion" class="form-control" rows="3"><?php echo htmlentities($_POST['descripcion']) ?></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="accion1" class="form-label">Acción</label>
                             <div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="accion" id="accion1" value="Prestamo" <?php echo 'Prestamo' == $_POST['accion'] ? 'checked' : '' ?>>
+                                    <label for="accion0" class="form-label">Préstamo</label>
+                                    <input class="form-check-input" type="checkbox" name="accion[]" id="accion0" value="Prestamo" <?php echo in_array('Préstamo',$_POST['accion']) ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="accion1">
-                                        Préstamo
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="accion" id="accion2" value="Intercambio" <?php echo 'Intercambio' == $_POST['accion'] ? 'checked' : '' ?>>
+                                    <label for="accion1" class="form-label">Intercambio</label>
+                                    <input class="form-check-input" type="checkbox" name="accion[]" id="accion1" value="Intercambio" <?php echo in_array('Intercambio',$_POST['accion']) ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="accion2">
-                                        Intercambio
                                     </label>
                                 </div>
                             </div>
@@ -191,8 +193,8 @@ fin;
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
-                        <a href="libros.php" class="btn btn-secondary btn-sm">Cancelar</a>
+                        <button type="submit" class="btn btn-outline-success">Enviar</button>
+                        <a href="libros.php" class="btn btn-outline-danger">Cancelar</a>
                     </form>
                     <?php
                     } else {
@@ -217,19 +219,10 @@ fin;
                                 $nombre_archivo = uniqid('Libro-', true) . '.jpg'; //se supone solo se admiten .jpg
                                 $titulo_archivo = !empty($_POST['titulo_fotografia']) ? $_POST['titulo_fotografia'] : $_POST['titulo'];
                                 move_uploaded_file($_FILES['archivo']['tmp_name'], './fotografias-libros/' . $nombre_archivo);
-                                $sentencia->bindValue(':libro_id', $_GET['id'], PDO::PARAM_INT);
-                                $sentencia->bindValue(':fotografia', $nombre_archivo, PDO::PARAM_STR);
-                                $sentencia->bindValue(':titulo_fotografia', $titulo_archivo, PDO::PARAM_STR);
                             }
                             else{
                                 $nombre_archivo = "";
                                 $titulo_archivo = "";
-                            }
-                            $sentencia = $conexion->prepare($sql);
-                            foreach($_POST['tema_id'] as $tema_id) {
-                                $sentencia->bindValue(':libro_id', $_GET['id'], PDO::PARAM_INT);
-                                $sentencia->bindValue(':tema_id', $tema_id, PDO::PARAM_INT);
-                                $sentencia->execute();
                             }
                             $sentencia = $conexion->prepare($sql);
                             $sentencia->bindValue(':fotografia', $nombre_archivo, PDO::PARAM_STR);
@@ -238,25 +231,23 @@ fin;
                             $sentencia->bindValue(':titulo', $_REQUEST['titulo'], PDO::PARAM_STR);
                             $sentencia->bindValue(':autor', $_REQUEST['autor'], PDO::PARAM_STR);
                             $sentencia->bindValue(':descripcion', $_REQUEST['descripcion'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':accion', $_REQUEST['accion'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':accion', implode(',',$_REQUEST['accion']), PDO::PARAM_STR);
                             $sentencia->bindValue(':existencias', $_REQUEST['existencias'], PDO::PARAM_INT);
                             $sentencia->bindValue(':costo_prestamo_dia', $_REQUEST['costo_prestamo_dia'], PDO::PARAM_STR);
                             $sentencia->bindValue(':costo_libro_nuevo', $_REQUEST['costo_libro_nuevo'], PDO::PARAM_STR);
                             $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
-                            // actualizamos registros en tabla libros
                             $sql = <<<fin
-                            insert ignore into
-                                libros_temas
-                                (
-                                    libro_id
-                                    , tema_id
-                                )
-                                values(
-                                    :libro_id
-                                    , :tema_id
-                                )
+                            insert ignore into libros_temas
+                            (libro_id, tema_id)
+                            values(:libro_id, :tema_id)
 fin;
+                            $sentencia = $conexion->prepare($sql);
+                            foreach($_POST['tema_id'] as $tema_id) {
+                                $sentencia->bindValue(':libro_id', $_GET['id'], PDO::PARAM_INT);
+                                $sentencia->bindValue(':tema_id', $tema_id, PDO::PARAM_INT);
+                                $sentencia->execute();
+                            }
                             $sentencia= $conexion->prepare($sql);
                             foreach($_POST['tema_id'] as $tema_id){
                             $sentencia->bindValue(':libro_id', $_GET['id'], PDO::PARAM_INT);
@@ -269,11 +260,11 @@ fin;
                             $sentencia = $conexion->prepare($sql);
                             $sentencia->bindValue(':libro_id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
-                            $sentencia = $conexion->prepare($sql);
                             // print_r($_FILES);
                                 // ¿Realmente se ha cargado un archivo?
                             echo '<h6>Libro actualizado</h6>';
-                            echo '<div><a href="libros.php" class="btn btn-secondary btn-sm">Ir a Libros</a></div>';
+                            echo '<div><a href="libros.php" class="btn btn-outline-success"><i class="bi-book"></i>   Libros</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         } else {
                             //creamos
                             $sql = <<<fin
@@ -321,7 +312,7 @@ fin;
                             $sentencia->bindValue(':titulo', $_REQUEST['titulo'], PDO::PARAM_STR);
                             $sentencia->bindValue(':autor', $_REQUEST['autor'], PDO::PARAM_STR);
                             $sentencia->bindValue(':descripcion', $_REQUEST['descripcion'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':accion', $_REQUEST['accion'], PDO::PARAM_STR);
+                            $sentencia->bindValue(':accion', implode(',',$_REQUEST['accion']), PDO::PARAM_STR);
                             $sentencia->bindValue(':existencias', $_REQUEST['existencias'], PDO::PARAM_INT);
                             $sentencia->bindValue(':costo_prestamo_dia', $_REQUEST['costo_prestamo_dia'], PDO::PARAM_STR);
                             $sentencia->bindValue(':costo_libro_nuevo', $_REQUEST['costo_libro_nuevo'], PDO::PARAM_STR);

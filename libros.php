@@ -15,19 +15,19 @@
     <?php
     require_once './menu.php';
     ?>
-    <div class="container mt-3">
-        <div class="card">
-            <h5 class="card-header"><i class="bi-book"></i> Libros</h5>
+    <div class="container mt-3" >
+        <div class="card text-dark bg-light mb-3">
+            <h4 class="card-header"><i class="bi-book"></i> Libros</h4>
             <div class="card-body">
-                <table class="table-striped table table-hover table-sm">
+                <table class="table table-striped table-hover table-sm">
                     <thead>
                         <tr>
-                            <th style="width: 20%;">Título</th>
-                            <th style="width: 20%;">Autor</th>
-                            <th style="width: 50%;">Editorial</th>
+                            <th style="width: 35%;">Título</th>
+                            <th style="width: 35%;">Autor</th>
+                            <th style="width: 20%;">Editorial</th>
                             <th style="width: 10%;">
-                                <a href="libro.php" class="btn btn-primary btn-sm">
-                                    <i class="bi-plus-circle-fill"></i> Crear
+                                <a href="libro.php" class="btn btn-success float-end">
+                                    <i class="bi-plus-lg "></i>  Crear
                                 </a>
                             </th>
                         </tr>
@@ -74,8 +74,8 @@ fin;
                             <td><?php echo htmlentities($row['autor']) ?></td>
                             <td><?php echo htmlentities($row['editorial']) ?></td>
                             <td>
-                                <a href="libro.php?id=<?php echo $row['id'] ?>" class="btn btn-primary btn-sm">
-                                    <i class="bi-pencil-square"></i>
+                                <a href="libro.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-success float-end">
+                                    <i class="bi-pencil-fill"></i>Modificar
                                 </a>
                             </td>
                         </tr>
@@ -84,6 +84,8 @@ fin;
                         ?>
                     </tbody>
                 </table>
+                <a href="index.php" class="btn btn-outline-dark float-end">
+                                    <i class="bi-house-door-fill"></i>   Inicio</a>
             </div>
         </div>
     </div>

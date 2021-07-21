@@ -18,6 +18,10 @@
                 </div>
                 <div class="card-body">
                     Recurso no encontrado
+                    
+                    <div>
+                    <a href="sesion.php" class="btn btn-primary btn-sm">Regresar</a>
+                    </div>
                 </div>
             </div>
         </div>

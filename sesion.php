@@ -61,7 +61,8 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['correo_electronico']) 
                                 <label for="contrasena" class="form-label">Contraseña</label>
                                 <input type="password" class="form-control form-control-sm" name="contrasena" id="contrasena" required>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Ingresar</button>
+                            <a href="usuario.php" class="btn btn-primary btn-sm">Crear usuario</a>
                         </form>
                     </div>
                 </div>
