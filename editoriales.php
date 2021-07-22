@@ -24,9 +24,11 @@
                     <h4 i class="bi-printer"></i> Editoriales</h4>
                 </div>
                 <div class="card-body">
-                    <h5 a class="float-end btn btn-secondary" href="editorial.php" title="Crear editorial">
+                <div class="d-grid gap-2">
+                <a class="float-end btn btn-secondary" href="editorial.php" title="Crear editorial">
                         <i class="bi-plus-lg"></i>   Crear</h5>
                     </a>
+                </div>
                     <table class="table-striped table table-hover table-sm">
                         <thead>
                             <tr>
@@ -56,8 +58,10 @@ fin;
                             ?>
                         </tbody>
                     </table>
+                    <div class="d-grid gap-2">
                     <a href="index.php" class="btn btn-outline-dark float-end">
                     <i class="bi-house-door-fill"></i>   Inicio</a>
+                        </div>
                 </div>
             </div>
         </div>

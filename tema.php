@@ -63,8 +63,10 @@ require_once './menu.php';
                             <input type="text" name="nombre" class="form-control form-control-sm<?php echo isset($errors) && $errors->has('nombre') ? ' is-invalid' : 'is-valid' ?>" id="nombre" aria-describedby="nombreHelp" value="<?php echo $_POST['nombre'] ?? '' ?>">
                             <div id="nombreHelp" class="invalid-feedback"><?php echo isset($errors) && $errors->first('nombre') ?></div>
                         </div>
+                        <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-outline-primary">Enviar</button>
                         <a href="temas.php" class="btn btn-outline-danger">Cancelar</a>
+                        </div>
                     </form>
                     <?php
                     } else {
@@ -78,8 +80,10 @@ require_once './menu.php';
                             $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
                             echo '<h6>Tema actualizado</h6>';
-                            echo '<div><a href="temas.php" class="btn btn-outline-primary"><i class="bi-bookmark-heart"></i>   Temas</a>
-                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
+                            echo '<div class="d-grid gap-2">
+                            <a href="temas.php" class="btn btn-outline-primary"><i class="bi-bookmark-heart"></i>   Temas</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a>
+                            </div>';
                         } else {
                             //creamos
                             $sql = 'insert into temas (nombre) values (:nombre)';
@@ -87,8 +91,10 @@ require_once './menu.php';
                             $sentencia->bindValue(':nombre', $_POST['nombre'], PDO::PARAM_STR);
                             $sentencia->execute();
                             echo '<h6>Tema creado</h6>';
-                            echo '<div><a href="temas.php" class="btn btn-outline-primary"><i class="bi-bookmark-heart"></i>   Temas</a>
-                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
+                            echo '<div class="d-grid gap-2">
+                            <a href="temas.php" class="btn btn-outline-primary"><i class="bi-bookmark-heart"></i>   Temas</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a>
+                            </div>';
                         }
                     }
                     ?>

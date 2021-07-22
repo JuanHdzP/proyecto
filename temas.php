@@ -24,9 +24,11 @@
                     <h4 i class="bi-bookmark-heart"></i> Temas</h4>
                 </div>
                 <div class="card-body">
+                <div class="d-grid gap-2">
                     <a class="float-end btn btn-primary" href="tema.php" title="Crear tema">
                         <i class="bi-plus-lg"></i> Crear
                     </a>
+                    </div>
                     <table class="table-striped table table-hover table-sm">
                         <thead>
                             <tr>
@@ -56,8 +58,10 @@ fin;
                             ?>
                         </tbody>
                     </table>
+                    <div class="d-grid gap-2">
                     <a href="index.php" class="btn btn-outline-dark float-end">
                     <i class="bi-house-door-fill"></i>   Inicio</a>
+                        </div>
                 </div>
             </div>
         </div>

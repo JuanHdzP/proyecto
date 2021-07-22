@@ -232,8 +232,10 @@ fin;
                             </div>
                         </div>
                     </div>
-                        <button type="submit" class="btn btn-outline-info">  Enviar</button>
-                        <a href="usuarios.php" class="btn btn-outline-danger">  Cancelar</a>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-outline-danger">  Enviar</button>
+                        <a href="usuarios.php" class="btn btn-danger">  Cancelar</a>
+                    </div>
                     </form>
                     <?php
                     } else {
@@ -321,7 +323,7 @@ fin;
                             $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
                             echo '<h6>Usuario actualizado</h6>';
-                            echo '<div><a href="usuarios.php" class="btn btn-outline-info"><i class="bi-people"></i>   Usuarios</a>
+                            echo '<div class="d-grid gap-2"><a href="usuarios.php" class="btn btn-outline-danger"><i class="bi-people"></i>   Usuarios</a>
                             <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         } else {
                             //creamos
@@ -412,7 +414,7 @@ fin;
                             $sentencia->bindValue(':carta_aval_2', $nombre_archivo4, PDO::PARAM_STR);
                             $sentencia->execute();
                             echo '<h6>Usuario creado</h6>';
-                            echo '<div><a href="usuarios.php" class="btn btn-outline-info"><i class="bi-people"></i>   Usuarios</a>
+                            echo '<div class="d-grid gap-2"><a href="usuarios.php" class="btn btn-outline-danger"><i class="bi-people"></i>   Usuarios</a>
                             <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         }
                     }

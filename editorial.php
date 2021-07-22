@@ -63,8 +63,10 @@ require_once './menu.php';
                             <input type="text" name="editorial" class="form-control form-control-sm<?php echo isset($errors) && $errors->has('editorial') ? ' is-invalid' : 'is-valid' ?>" id="editorial" aria-describedby="categoriaHelp" value="<?php echo $_POST['editorial'] ?? '' ?>">
                             <div id="editorialHelp" class="invalid-feedback"><?php echo isset($errors) && $errors->first('editorial') ?></div>
                         </div>
+                        <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-outline-secondary">Enviar</button>
                         <a href="editoriales.php" class="btn btn-outline-danger">Cancelar</a>
+                    </div>
                     </form>
                     <?php
                     } else {
@@ -78,7 +80,8 @@ require_once './menu.php';
                             $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
                             echo '<h6>Editorial actualizada</h6>';
-                            echo '<div><a href="editoriales.php" class="btn btn-outline-secondary"><i class="bi-printer"></i>   Editoriales</a>
+                            echo '<div class="d-grid gap-2">
+                            <a href="editoriales.php" class="btn btn-outline-secondary"><i class="bi-printer"></i>   Editoriales</a>
                             <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         } else {
                             //creamos
@@ -87,7 +90,8 @@ require_once './menu.php';
                             $sentencia->bindValue(':editorial', $_POST['editorial'], PDO::PARAM_STR);
                             $sentencia->execute();
                             echo '<h6>Editorial creada</h6>';
-                            echo '<div><a href="editoriales.php" class="btn btn-outline-secondary"><i class="bi-printer"></i>   Editoriales</a>
+                            echo '<div class="d-grid gap-2">
+                            <a href="editoriales.php" class="btn btn-outline-secondary"><i class="bi-printer"></i>   Editoriales</a>
                             <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         }
                     }

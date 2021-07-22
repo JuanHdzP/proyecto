@@ -22,7 +22,7 @@
                 <tr>
                     <th style="width:60%">
                         <div class="card">
-                            <p class="card-header fs-5 fw-normal"><i class="bi bi-collection"></i> De un vistazo</p>
+                            <h5 p class="card-header fs-5 fw-normal"><i class="bi bi-collection"></i> De un vistazo</h5></p>
                             <div class="card-body">
                                 <div id="carouselLibros" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner rounded-3">
@@ -79,7 +79,7 @@
                                 <tr style="width:40%">
                                     <th>
                                         <div class="card">
-                                            <p class="card-header fs-5 fw-normal"><i class="bi bi-journal-plus"></i> Registro</p>
+                                            <h5 p class="card-header fs-5 fw-normal"><i class="bi bi-journal-plus"></i> Registro</h5></p>
                                             <div class="card-body">
                                                 <p class="fs-6 fw-normal">
                                                     Despues de crear tu perfil, podras agregar tantos libros como gustes, ademas de decidir si el tipo de accion sera intercambio, prestamo o regalo, ademas de decidir el precio por la accion.
@@ -91,7 +91,7 @@
                                 <tr style="width:60%">
                                     <th>
                                         <div class="card">
-                                            <p class="card-header fs-5 fw-normal"><i class="bi bi-people"></i> Comunidad</p>
+                                        <h5 p class="card-header fs-5 fw-normal"><i class="bi bi-people"></i> Comunidad</h5></p>
                                             <div class="card-body">
                                                 <p class="fs-6 fw-normal">
                                                 CroosBook es una plataforma que esta comprometida con su comunidad, ¿Has notado algo raro?, ¿Tardaron en devolverte tu libro?, ¿Tienes alguna sugerencia?, contacta con algun desarrollador ¡Esperamos tus comentarios! 

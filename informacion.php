@@ -25,7 +25,7 @@
                                     <tbody>
                                         <tr>
                                             <th style="width: 30%">
-                                                <div class="card" style="width: 12rem;">
+                                                <div class="card" style="width: 14rem;">
                                                     <img src="./recursos/DevUno.png" class="card-img-top" alt="DevOne">
                                                     <div class="card-body">
                                                         <p class="fs-6 fw-normal">Ismael Pasalagua Santana</p>
@@ -33,7 +33,7 @@
                                                     </div>
                                                 </div>
                                             <th style="width: 30%">
-                                                <div class="card" style="width: 12rem;">
+                                                <div class="card" style="width: 14rem;">
                                                     <img src="./recursos/DevDos.png" class="card-img-top" alt="DevOne">
                                                     <div class="card-body">
                                                         <p class="fs-6 fw-normal">Juan Hernandez Puebla</p>
@@ -41,7 +41,7 @@
                                                     </div>
                                                 </div>
                                             <th style="width: 30%">
-                                                <div class="card" style="width: 12rem;">
+                                                <div class="card" style="width: 14rem;">
                                                     <img src="./recursos/DevTres.png" class="card-img-top" alt="DevOne">
                                                     <div class="card-body">
                                                         <p class="fs-6 fw-normal">Luis Eduardo Chavez Salgado</p>

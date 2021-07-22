@@ -46,11 +46,13 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['correo_electronico']) 
     ?>
     <div class="container mt-3">
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-4">
                 <div class="card">
                     <div class="card-header">
-                        Inicio de sesión
+                    <h4 i class="bi-key-fill"></i> Inicio de sesión</h4>
                     </div>
+                    <div class="card" style="width: 26rem;">
+                    <img src="recursos/usuario.jpg" class="card-img-top" alt="Imagen usuario">
                     <div class="card-body">
                         <form action="sesion.php" method="post">
                             <div class="mb-3">
@@ -61,8 +63,10 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['correo_electronico']) 
                                 <label for="contrasena" class="form-label">Contraseña</label>
                                 <input type="password" class="form-control form-control-sm" name="contrasena" id="contrasena" required>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm">Ingresar</button>
-                            <a href="usuario.php" class="btn btn-primary btn-sm">Crear usuario</a>
+                            <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-outline-success"><i class="bi-door-open-fill"></i>   Ingresar</button>
+                            <a href="usuario.php" class="btn btn-outline-danger"><i class="bi-people"></i>   Crear usuario</a>
+                            </div>
                         </form>
                     </div>
                 </div>

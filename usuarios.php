@@ -16,6 +16,11 @@
         <div class="card">
             <h4 class="card-header"><i class="bi-people"></i> Usuarios</h4>
             <div class="card-body">
+            <div class="d-grid gap-2">
+            <a href="usuario.php" class="btn btn btn-danger float-end">
+                                    <i class="bi-plus-lg"></i> Crear
+                                </a>
+            </div>
                 <table class="table-striped table table-hover table-sm">
                     <thead>
                         <tr>
@@ -24,9 +29,6 @@
                             <th style="width: 20%;">Perfil</th>
                             <th style="width: 20%;">Estatus</th>
                             <th style="width: 20%;">
-                                <a href="usuario.php" class="btn btn-outline-info float-end">
-                                    <i class="bi-plus-lg"></i> Crear
-                                </a>
                             </th>
                         </tr>
                     </thead>
@@ -53,7 +55,7 @@ fin;
                             <td><?php echo htmlentities($row['perfil']) ?></td>
                             <td><?php echo htmlentities($row['estatus']) ?></td>
                             <td>
-                                <a href="usuario.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-info float-end">
+                                <a href="usuario.php?id=<?php echo $row['id'] ?>" class="btn btn btn-outline-danger float-end">
                                     <i class="bi-pencil-fill"></i>Modificar
                                 </a>
                             </td>
@@ -63,8 +65,10 @@ fin;
                         ?>
                     </tbody>
                 </table>
+                <div class="d-grid gap-2">
                 <a href="index.php" class="btn btn-outline-dark float-end">
                     <i class="bi-house-door-fill"></i>   Inicio</a>
+                    </div>
             </div>
         </div>
     </div>

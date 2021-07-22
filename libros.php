@@ -19,6 +19,10 @@
         <div class="card text-dark bg-light mb-3">
             <h4 class="card-header"><i class="bi-book"></i> Libros</h4>
             <div class="card-body">
+            <div class="d-grid gap-2">
+            <a href="libro.php" class="btn btn-success float-end">
+            <i class="bi-plus-lg "></i>  Crear</a>
+            </div>
                 <table class="table table-striped table-hover table-sm">
                     <thead>
                         <tr>
@@ -26,9 +30,7 @@
                             <th style="width: 35%;">Autor</th>
                             <th style="width: 20%;">Editorial</th>
                             <th style="width: 10%;">
-                                <a href="libro.php" class="btn btn-success float-end">
-                                    <i class="bi-plus-lg "></i>  Crear
-                                </a>
+                                
                             </th>
                         </tr>
                     </thead>
@@ -84,8 +86,10 @@ fin;
                         ?>
                     </tbody>
                 </table>
+                <div class="d-grid gap-2">
                 <a href="index.php" class="btn btn-outline-dark float-end">
                                     <i class="bi-house-door-fill"></i>   Inicio</a>
+                    </div>
             </div>
         </div>
     </div>
