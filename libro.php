@@ -1,7 +1,7 @@
 <?php
-                            //print_r($_REQUEST);
-                           // exit;
-//require_once './checa-sesion.php';
+//print_r($_REQUEST);
+// exit;
+require_once './checa-sesion.php';
 require('vendor/autoload.php');
 use Rakit\Validation\Validator;
 require_once './conexion.php';
@@ -69,7 +69,7 @@ require_once './menu.php';
                         // validamos los datos
                         $validator = new Validator;
                         $validation = $validator->make($_POST, [
-                            'editorial_id' => 'required|integer|min:1|max:32'
+                            'editorial_id' => 'required'
                             , 'titulo' => 'required|min:2|max:100'
                             , 'autor' => 'required|min:2|max:100'
                             , 'descripcion' => 'required'
@@ -146,7 +146,7 @@ fin;
                             <div>
                                 <div class="form-check">
                                     <label for="accion0" class="form-label">Préstamo</label>
-                                    <input class="form-check-input" type="checkbox" name="accion[]" id="accion0" value="Prestamo" <?php echo in_array('Préstamo',$_POST['accion']) ? 'checked' : '' ?>>
+                                    <input class="form-check-input" type="checkbox" name="accion[]" id="accion0" value="Préstamo" <?php echo in_array('Préstamo',$_POST['accion']) ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="accion1">
                                     </label>
                                 </div>
@@ -193,8 +193,10 @@ fin;
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-outline-success">Enviar</button>
                         <a href="libros.php" class="btn btn-outline-danger">Cancelar</a>
+                            </div>
                     </form>
                     <?php
                     } else {
@@ -263,8 +265,10 @@ fin;
                             // print_r($_FILES);
                                 // ¿Realmente se ha cargado un archivo?
                             echo '<h6>Libro actualizado</h6>';
-                            echo '<div><a href="libros.php" class="btn btn-outline-success"><i class="bi-book"></i>   Libros</a>
-                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
+                            echo '<div class="d-grid gap-2">
+                            <a href="libros.php" class="btn btn-outline-success"><i class="bi-book"></i>   Libros</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a>
+                            </div>';
                         } else {
                             //creamos
                             $sql = <<<fin
@@ -331,7 +335,11 @@ fin;
                                 $sentencia->execute();
                             }
                             echo '<h6>Libro creado</h6>';
-                            echo '<div><a href="libros.php" class="btn btn-secondary btn-sm">Ir a Libros</a></div>';
+                            echo '<div class="d-grid gap-2">
+                            <a href="libro.php" class="btn btn-success"><i class="bi-plus-lg"></i>   Crear otro</a>
+                            <a href="libros.php" class="btn btn-outline-success"><i class="bi-book"></i>   Libros</a>
+                            <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a>
+                            </div>';
                         }
                     }
                     ?>

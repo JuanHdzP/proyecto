@@ -1,4 +1,5 @@
 <?php
+require_once './checa-sesion.php';
 require('vendor/autoload.php');
 use Rakit\Validation\Validator;
 require_once './conexion.php';
@@ -414,7 +415,9 @@ fin;
                             $sentencia->bindValue(':carta_aval_2', $nombre_archivo4, PDO::PARAM_STR);
                             $sentencia->execute();
                             echo '<h6>Usuario creado</h6>';
-                            echo '<div class="d-grid gap-2"><a href="usuarios.php" class="btn btn-outline-danger"><i class="bi-people"></i>   Usuarios</a>
+                            echo '<div class="d-grid gap-2">
+                            <a href="usuario.php" class="btn btn btn-danger"><i class="bi-plus-lg"></i>   Crear otro</a>
+                            <a href="usuarios.php" class="btn btn-outline-danger"><i class="bi-people"></i>   Usuarios</a>
                             <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         }
                     }

@@ -1,5 +1,5 @@
 <?php
-//require_once './checa-sesion.php';
+require_once './checa-sesion.php';
 require('vendor/autoload.php');
 use Rakit\Validation\Validator;
 if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -92,6 +92,7 @@ require_once './menu.php';
                             $sentencia->execute();
                             echo '<h6>Tema creado</h6>';
                             echo '<div class="d-grid gap-2">
+                            <a href="tema.php" class="btn btn-primary"><i class="bi-plus-lg"></i>   Crear otro</a>
                             <a href="temas.php" class="btn btn-outline-primary"><i class="bi-bookmark-heart"></i>   Temas</a>
                             <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a>
                             </div>';

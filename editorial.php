@@ -1,5 +1,5 @@
 <?php
-//require_once './checa-sesion.php';
+require_once './checa-sesion.php';
 require('vendor/autoload.php');
 use Rakit\Validation\Validator;
 if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -91,6 +91,7 @@ require_once './menu.php';
                             $sentencia->execute();
                             echo '<h6>Editorial creada</h6>';
                             echo '<div class="d-grid gap-2">
+                            <a href="editorial.php" class="btn btn-secondary"><i class="bi-plus-lg"></i>   Crear otra</a>
                             <a href="editoriales.php" class="btn btn-outline-secondary"><i class="bi-printer"></i>   Editoriales</a>
                             <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a></div>';
                         }
