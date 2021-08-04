@@ -11,6 +11,10 @@ $opciones = [
     , PDO::ATTR_EMULATE_PREPARES => false
     , PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 ]; 
-
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    die();
+}
+$error = "";
 $conexion = new PDO($dsn, $nombre_usuario, $contrasena, $opciones);
 

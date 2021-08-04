@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
@@ -18,13 +19,13 @@
                 <tr>
                     <th style="width:55%">
                         <div class="card">
-                            <h4 p class="card-header fs-5 fw-normal"><i class="bi-file-person"></i> Desarrolladores</h4></p>
+                            <p class="card-header fs-5 fw-normal"><i class="bi bi-file-person"></i> Desarrolladores</p>
                             <div class="card-body">
                                 <table>
                                     <tbody>
                                         <tr>
                                             <th style="width: 30%">
-                                                <div class="card" style="width: 14rem;">
+                                                <div class="card" style="width: 12rem;">
                                                     <img src="./recursos/DevUno.png" class="card-img-top" alt="DevOne">
                                                     <div class="card-body">
                                                         <p class="fs-6 fw-normal">Ismael Pasalagua Santana</p>
@@ -32,7 +33,7 @@
                                                     </div>
                                                 </div>
                                             <th style="width: 30%">
-                                                <div class="card" style="width: 14rem;">
+                                                <div class="card" style="width: 12rem;">
                                                     <img src="./recursos/DevDos.png" class="card-img-top" alt="DevOne">
                                                     <div class="card-body">
                                                         <p class="fs-6 fw-normal">Juan Hernandez Puebla</p>
@@ -40,7 +41,7 @@
                                                     </div>
                                                 </div>
                                             <th style="width: 30%">
-                                                <div class="card" style="width: 14rem;">
+                                                <div class="card" style="width: 12rem;">
                                                     <img src="./recursos/DevTres.png" class="card-img-top" alt="DevOne">
                                                     <div class="card-body">
                                                         <p class="fs-6 fw-normal">Luis Eduardo Chavez Salgado</p>
@@ -56,7 +57,7 @@
                     </th>
                     <th style="width:35%">
                         <div class="card">
-                            <h4 p class="card-header fs-5 fw-normal"><i class="bi bi-envelope"></i> Contacto</h4></p>
+                            <p class="card-header fs-5 fw-normal"><i class="bi bi-envelope"></i> Contacto</p>
                             <div class="card-body">
                                 <p class="fs-6 fw-normal">
                                     En caso de querer <h class="fw-bold">reportar</h> alguna situacion:

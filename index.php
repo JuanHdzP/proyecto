@@ -22,13 +22,13 @@
                 <tr>
                     <th style="width:60%">
                         <div class="card">
-                            <h5 p class="card-header fs-5 fw-normal"><i class="bi bi-collection"></i> De un vistazo</h5></p>
+                            <p class="card-header fs-5 fw-normal"><i class="bi bi-collection"></i> De un vistazo</p>
                             <div class="card-body">
                                 <div id="carouselLibros" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner rounded-3">
                                         
                                         <div class="carousel-item active">
-                                            <img src="./recursos/MainSplash.jpg" class="d-block w-100" alt="Inicio">
+                                            <img src="./recursos/MainSplash.jpg" class="d-block blur " alt="Inicio" height="400" width="100%">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <p class="fs-5 fw-light">He aqui algunos de nuestros libros</p>
                                                 <p class="fs-6 fw-light">Recuerda consultar la seccion Libros para poder rentarlos o intercambiarlos</p>
@@ -48,7 +48,7 @@
 
                                             echo <<<fin
                                             <div class="carousel-item">
-                                                <img src='./fotografias-libros/{$fotografia}' class="d-block w-100" alt="{$titulo}">
+                                                    <img src='./fotografias-libros/{$fotografia}' class="d-block" alt="{$titulo}" height="400" width="100%">
                                                 <div class="carousel-caption d-none d-md-block">
                                                     <p class="fs-5 fw-light">{$titulo} escrito por {$autor}</p>
                                                     <p class="fs-6 fw-light">{$descripcion}</p>
@@ -79,7 +79,7 @@
                                 <tr style="width:40%">
                                     <th>
                                         <div class="card">
-                                            <h5 p class="card-header fs-5 fw-normal"><i class="bi bi-journal-plus"></i> Registro</h5></p>
+                                            <p class="card-header fs-5 fw-normal"><i class="bi bi-journal-plus"></i> Registro</p>
                                             <div class="card-body">
                                                 <p class="fs-6 fw-normal">
                                                     Despues de crear tu perfil, podras agregar tantos libros como gustes, ademas de decidir si el tipo de accion sera intercambio, prestamo o regalo, ademas de decidir el precio por la accion.
@@ -91,7 +91,7 @@
                                 <tr style="width:60%">
                                     <th>
                                         <div class="card">
-                                        <h5 p class="card-header fs-5 fw-normal"><i class="bi bi-people"></i> Comunidad</h5></p>
+                                            <p class="card-header fs-5 fw-normal"><i class="bi bi-people"></i> Comunidad</p>
                                             <div class="card-body">
                                                 <p class="fs-6 fw-normal">
                                                 CroosBook es una plataforma que esta comprometida con su comunidad, ¿Has notado algo raro?, ¿Tardaron en devolverte tu libro?, ¿Tienes alguna sugerencia?, contacta con algun desarrollador ¡Esperamos tus comentarios! 

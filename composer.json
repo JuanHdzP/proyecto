@@ -5,7 +5,8 @@
     "require": {
         "vlucas/phpdotenv": "5.3.x-dev",
         "rakit/validation": "dev-master",
-        "aura/session": "3.x-dev"
+        "aura/session": "3.x-dev",
+        "phpmailer/phpmailer": "dev-master"
     },
     "license": "MIT",
     "authors": [
