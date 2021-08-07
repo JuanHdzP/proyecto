@@ -18,7 +18,7 @@
     <div class="container mt-3">
         <div class="row justify-content-center">
                 <div class="card" style="width: 71rem;">
-                <h4 class="card-header"><i class="bi-pin-map-fill"></i> Ubícanos</h4>
+                <h4 class="card-header  text-center"><i class="bi-pin-map-fill"></i> Ubícanos</h4>
                     <div class="card-body">
                         Nos ubicamos en Santa María Atarasquillo, Lerma, México
                     </div>

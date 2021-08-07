@@ -7,7 +7,7 @@ require_once './checa-sesion.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuarios</title>
+    <title>Préstamos</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
@@ -17,20 +17,19 @@ require_once './checa-sesion.php';
     ?>
     <div class="container mt-3">
         <div class="card">
-            <h4 class="card-header  text-center"><i class="bi-people"></i> Usuarios</h4>
+            <h4 class="card-header  text-center"><i class="bi bi-arrows-angle-contract"></i> Préstamos</h4>
             <div class="card-body">
             <div class="d-grid gap-2">
-            <a href="usuario.php" class="btn btn btn-danger float-end">
-                                    <i class="bi-plus-lg"></i> Crear
+            <a href="prestamo.php" class="btn btn-success float-end">
+                                    <i class="bi-plus-lg"></i> Generar
                                 </a>
             </div>
                 <table class="table-striped table table-hover table-sm">
                     <thead>
                         <tr>
-                            <th style="width: 20%;">Nombre</th>
-                            <th style="width: 20%;">Correo</th>
-                            <th style="width: 20%;">Perfil</th>
-                            <th style="width: 20%;">Estatus</th>
+                            <th style="width: 30%;">Cliente</th>
+                            <th style="width: 30%;">Fecha del préstamo</th>
+                            <th style="width: 30%;">Fecha de la devolución</th>
                             <th style="width: 20%;">
                             </th>
                         </tr>
@@ -39,14 +38,15 @@ require_once './checa-sesion.php';
                         <?php
                         require_once './conexion.php';
                         $sql = <<<fin
-select
-    u.id
-    , concat(u.primer_apellido, ' ', u.segundo_apellido, ' ', u.nombre) as nombre
-    , u.correo_electronico 
-    , u.perfil 
-    , u.estatus 
-from
-    usuarios u
+                        select
+                            p.id
+                            , concat(u.primer_apellido, ' ', u.segundo_apellido, ' ', u.nombre) as nombre
+                            , p.contacto_id
+                            , p.fecha_prestamo
+                            , p.fecha_devolucion
+                        from
+                            prestamos p
+                            inner join usuarios u on p.contacto_id = u.id                            
 fin;
                         $sentencia = $conexion->prepare($sql);
                         $sentencia->execute();
@@ -54,11 +54,10 @@ fin;
                         ?>
                         <tr>
                             <td><?php echo htmlentities($row['nombre']) ?></td>
-                            <td><?php echo htmlentities($row['correo_electronico']) ?></td>
-                            <td><?php echo htmlentities($row['perfil']) ?></td>
-                            <td><?php echo htmlentities($row['estatus']) ?></td>
+                            <td><?php echo htmlentities($row['fecha_prestamo']) ?></td>
+                            <td><?php echo htmlentities($row['fecha_devolucion']) ?></td>
                             <td>
-                                <a href="usuario.php?id=<?php echo $row['id'] ?>" class="btn btn btn-outline-danger float-end">
+                                <a href="prestamo.php?id=<?php echo $row['id'] ?>" class="btn btn btn-outline-success float-end">
                                     <i class="bi-pencil-fill"></i>Modificar
                                 </a>
                             </td>

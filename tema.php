@@ -36,7 +36,7 @@ require_once './menu.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h5 i class="bi-bookmark-heart"></i> Crear tema</h5>
+                    <h5 i class="bi-bookmark-heart text-center"></i> Crear tema</h5>
                 </div>
                 <div class="card-body">
                     <?php

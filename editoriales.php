@@ -21,7 +21,7 @@ require_once './checa-sesion.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h4 i class="bi-printer"></i> Editoriales</h4>
+                    <h4 i class="bi-printer  text-center"></i> Editoriales</h4>
                 </div>
                 <div class="card-body">
                 <div class="d-grid gap-2">
@@ -32,8 +32,8 @@ require_once './checa-sesion.php';
                     <table class="table-striped table table-hover table-sm">
                         <thead>
                             <tr>
-                                <th style="width:80%;">Editorial</th>
-                                <th style="width:20%;">&nbsp;</th>
+                                <th style="width:60%;">Editorial</th>
+                                <th style="width:40%;">&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>

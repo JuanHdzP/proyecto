@@ -17,4 +17,3 @@ if (mysqli_connect_errno()) {
 }
 $error = "";
 $conexion = new PDO($dsn, $nombre_usuario, $contrasena, $opciones);
-

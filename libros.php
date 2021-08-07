@@ -17,10 +17,10 @@ require_once './checa-sesion.php';
     ?>
     <div class="container mt-3" >
         <div class="card text-dark bg-light mb-3">
-            <h4 class="card-header"><i class="bi-book"></i> Libros</h4>
+            <h4 class="card-header text-center"><i class="bi-book"></i> Libros</h4>
             <div class="card-body">
             <div class="d-grid gap-2">
-            <a href="libro.php" class="btn btn-success float-end">
+            <a href="libro_crear.php" class="btn btn-success float-end">
             <i class="bi-plus-lg "></i>  Crear</a>
             </div>
                 <table class="table table-striped table-hover table-sm">
@@ -76,7 +76,7 @@ fin;
                             <td><?php echo htmlentities($row['autor']) ?></td>
                             <td><?php echo htmlentities($row['editorial']) ?></td>
                             <td>
-                                <a href="libro.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-success float-end">
+                                <a href="libro_crear.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-success float-end">
                                     <i class="bi-pencil-fill"></i>Modificar
                                 </a>
                             </td>

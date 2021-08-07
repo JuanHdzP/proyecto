@@ -37,7 +37,7 @@ require_once './menu.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h5 i class="bi-people"></i> <?php echo htmlentities($accion) ?></h5>
+                    <h5 i class="bi-people text-center"></i> <?php echo htmlentities($accion) ?></h5>
                 </div>
                 <div class="card-body">
                 <?php

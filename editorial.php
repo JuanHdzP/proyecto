@@ -36,12 +36,11 @@ require_once './menu.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h5 i class="bi-printer"></i> Crear editorial </h5>
+                <h5 i class="bi-printer text-center"></i> Crear editorial </h5>
                 </div>
                 <div class="card-body">
                     <?php
                     if ('POST' == $_SERVER['REQUEST_METHOD']) {
-                        // validamos los datos
                         $validator = new Validator;
                         $validation = $validator->make($_POST, [
                             'editorial' => 'required|min:2|max:50'
