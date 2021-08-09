@@ -23,7 +23,11 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['correo_electronico']) 
         $segment->set('correo_electronico', $usuario['correo_electronico']);
         $segment->set('perfil', $usuario['perfil']);
         $segment->set('estatus', $usuario['estatus']);
-        header('Location: index.php');
+        if($usuario['perfil']=='Cliente'){ //cliente
+            header("location:index.php");
+            }else{
+                header('location: home.php');
+            }
     } else {
         header('Location: sesion.php?mensaje=Contraseña incorrecta');
     }
@@ -51,7 +55,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['correo_electronico']) 
                     <div class="card-header">
                     <h4 i class="bi-key-fill"></i> Inicio de sesión</h4>
                     </div>
-                    <div class="card" style="width: 26rem;">
+                    <div class="card" style="width: 22.9rem;">
                     <img src="recursos/usuario.jpg" class="card-img-top" alt="Imagen usuario">
                     <div class="card-body">
                         <form action="sesion.php" method="post">

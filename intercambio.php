@@ -4,7 +4,7 @@ require('vendor/autoload.php');
 use Rakit\Validation\Validator;
 require_once './conexion.php';
 if ('GET' == $_SERVER['REQUEST_METHOD'] && isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $sql = 'select id, contacto_id, empleado_id, entrada_libro_id, salida_libro_id, fecha_intercambio, costo from intercambios where id = :id';
+    $sql = 'select * from intercambios where id = :id';
     $sentencia = $conexion->prepare($sql);
     $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
     $sentencia->execute();
@@ -46,9 +46,9 @@ require_once './menu.php';
                             'contacto_id' => 'required'
                             , 'empleado_id' => 'required'
                             , 'entrada_libro_id' => 'required'
-                            , 'salida_libro__id' => 'required'                        
-                            , 'fecha_intercambio' => 'required'
-                            , 'costo' => 'required'
+                            , 'salida_libro_id' => 'required'                        
+                            , 'fecha_intercambio' => 'required|date:Y-m-d|'
+                            , 'costo' => 'required|min:1|max:100'
                         ]);
                         $validation->setMessages([
                             'required' => ':attribute es requerido'
@@ -61,6 +61,7 @@ require_once './menu.php';
                     }
                     if ('GET' == $_SERVER['REQUEST_METHOD'] || $validation->fails()) {
                     ?>
+                   
                             <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST">                        
                             <div class="mb-3">
                             <label for="contacto_id" class="form-label">Cliente</label>
@@ -195,11 +196,10 @@ fin;
                             $sentencia->bindValue(':salida_libro_id', $_REQUEST['salida_libro_id'], PDO::PARAM_INT);
                             $sentencia->bindValue(':fecha_intercambio', $_REQUEST['fecha_intercambio'], PDO::PARAM_STR);
                             $sentencia->bindValue(':costo', $_REQUEST['costo'], PDO::PARAM_STR);
-                            $sentencia->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
                             $sentencia->execute();
                             echo '<h6>Intercambio generado</h6>';
                             echo '<div class="d-grid gap-2">
-                            <a href="libro.php" class="btn btn-success"><i class="bi-plus-lg"></i>   Generar otro</a>
+                            <a href="intercambios.php" class="btn btn-success"><i class="bi-plus-lg"></i>   Generar otro</a>
                             <a href="intercambios.php" class="btn btn-outline-success"><i class="bi-book"></i>   Intercambios</a>
                             <a href="index.php" class="btn btn-outline-dark"><i class="bi-house-door-fill"></i>   Inicio</a>
                             </div>';
