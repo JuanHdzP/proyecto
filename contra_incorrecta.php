@@ -19,10 +19,10 @@ require_once './menu.php';
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                <h5 i class="bi bi-exclamation-lg text-center"></i>  Usuario no encontrado
+                <h5 i class="bi bi-exclamation-lg text-center"></i>  Contraseña incorrecta
                 </div>
                 <div class="card-body">
-                    <p class="text-center">Usuario no es administrador o se encuentra inactivo</p>
+                    <p class="text-center">Contraseña incorrecta, intente nuevamente</p>
                     <div>
                     <div class="d-grid gap-2">
                     <a href="sesion.php" class="btn btn-outline-success"><i class="bi-door-open-fill"></i>  Inicio de sesión</a>

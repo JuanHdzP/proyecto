@@ -51,7 +51,7 @@ require_once './menu.php';
                             $sentencia = $conexion->prepare($sql);
                             $sentencia->execute();
                             $output.='<p>Haga clic en el siguiente enlace para reestablecer su contraseña.</p>';
-                            $output.='<p><a href="http://localhost:8080/proyecto/recuperar_contrasena.php?key=' . $key . '&email=' . $correo . '&action=reset" target="_blank">http://localhost:8080/proyecto/recuperar_contrasena.php?key=' . $key . '&email=' . $correo . '&action=reset</a></p>';
+                            $output.='<p><a href="http://localhost:8080/proyecto/recuperar_contrasena.php?key=' . $key . '&correo=' . $correo . '&action=reset" target="_blank">http://localhost:8080/proyecto/recuperar_contrasena.php?key=' . $key . '&correo=' . $correo . '&action=reset</a></p>';
                             $body = $output;
                             $subject = "Recuperación de contraseña";
                             $email_to = $correo;

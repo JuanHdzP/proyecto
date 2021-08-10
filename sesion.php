@@ -26,10 +26,10 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['correo_electronico']) 
         if($usuario['perfil']=='Cliente'){ //cliente
             header("location:index.php");
             }else{
-                header('location: home.php');
+                header('location: index.php');
             }
     } else {
-        header('Location: sesion.php?mensaje=Contraseña incorrecta');
+        header('Location: contra_incorrecta.php');
     }
     exit;
 }
@@ -70,7 +70,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['correo_electronico']) 
                             <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-outline-success"><i class="bi-door-open-fill"></i>   Ingresar</button>
                             <a href="usuario.php" class="btn btn-outline-danger"><i class="bi-people"></i>   Crear usuario</a>
-                            <a href="olvido_contrasena.php" class="link-primary">¿Olvidó su contraseña?</a>
+                            <a href="olvido_contrasena.php" class="link-primary text-center">¿Olvidó su contraseña?</a>
                             </div>
                         </form>
                     </div>
