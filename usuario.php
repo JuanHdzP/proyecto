@@ -1,5 +1,5 @@
 <?php
-require_once './checa-sesion.php';
+//require_once './checa-sesion.php';
 require('vendor/autoload.php');
 use Rakit\Validation\Validator;
 require_once './conexion.php';
